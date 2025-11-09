@@ -27,7 +27,7 @@ First, you need to build the Docker image and push it to a container registry, l
 **1. Build the image:**
 
 ```bash
-docker build -t your-dockerhub-username/noakhali-ai-system:v0.6.0 .
+docker build -t your-dockerhub-username/noakhali-ai-system:v0.6.0 -f ruinnakbe/Dockerfile .
 ```
 
 (Replace `your-dockerhub-username` with your actual Docker Hub username)
@@ -66,7 +66,7 @@ docker pull your-dockerhub-username/noakhali-ai-system:v0.6.0
 **2. Run the application:**
 
 ```bash
-docker run -p 8080:8080 your-dockerhub-username/noakhali-ai-system:v0.6.0
+docker run -p 8080:8080 -v $(pwd)/ruinnakbe/uploads:/app/uploads -v $(pwd)/ruinnakbe/client_secret.json:/app/client_secret.json your-dockerhub-username/noakhali-ai-system:v0.6.0
 ```
 
 The application will then be available at [http://localhost:8080](http://localhost:8080).
