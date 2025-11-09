@@ -1,12 +1,20 @@
 # Noakhali AI System
 
-A simple web application to get and display the current timestamp, and to upload and list files.
+A simple web application with a command interface, file uploading, and file listing capabilities.
 
 ## Features
 
-- Displays the current server timestamp.
-- Allows users to upload files.
-- Lists all uploaded files.
+- **Command Interface:** Execute simple text-based commands.
+- **File Upload:** Upload files to the server.
+- **File Listing:** View a list of all uploaded files.
+- **Timestamp Display:** Shows the current server timestamp.
+
+## Commands
+
+The following commands are currently supported:
+
+- `list files`: Displays a list of all uploaded files.
+- `clear uploads`: Deletes all uploaded files.
 
 ## How to run
 
