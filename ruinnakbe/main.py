@@ -6,7 +6,7 @@ import google.oauth2.credentials
 import google_auth_oauthlib.flow
 from googleapiclient.discovery import build
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
