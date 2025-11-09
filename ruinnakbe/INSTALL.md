@@ -1,58 +1,43 @@
-# How to Install and Build ruinnakbe
+# How to Install and Run ruinnakbe
 
-This document provides instructions on how to build the `ruinnakbe` application from source and create a release archive.
+This document provides instructions on how to install and run the `ruinnakbe` web application.
 
 ## Prerequisites
 
-- Python 3
-- `pip` (Python package installer)
+- Python 3 (https://www.python.org/downloads/)
+- `pip` (usually comes with Python)
 
-## 1. Install Dependencies
+## 1. Get the Code
 
-You will need to install the `pyinstaller` package to build the executable. You can install it using `pip`:
-
-```bash
-pip3 install pyinstaller
-```
-
-## 2. Build the Executable
-
-To build the executable, run the following command from the root of the project:
+First, get the application code. You can do this by cloning the repository:
 
 ```bash
+git clone <repository-url>
 cd ruinnakbe
-pyinstaller --onefile main.py
 ```
 
-This will create a `dist` directory containing the executable file named `main`.
+## 2. Install Dependencies
 
-## 3. Create a Release Archive
-
-To create a release archive, you can create a compressed tarball of the executable.
-
-First, create a `release` directory:
-```bash
-mkdir release
-```
-
-Then, create the archive:
-```bash
-tar -czvf release/ruinnakbe.tar.gz -C dist main
-```
-
-The release archive will be located at `release/ruinnakbe.tar.gz`.
-
-## 4. Run the Application
-
-You can run the application directly from the executable created in the `dist` folder:
+This project uses the Flask web framework. You can install it using the `requirements.txt` file:
 
 ```bash
-./dist/main
+pip3 install -r requirements.txt
 ```
 
-Or, you can extract the archive and run it from there:
+## 3. Run the Web Application
+
+To start the application, run the `main.py` script:
 
 ```bash
-tar -xzvf release/ruinnakbe.tar.gz
-./main
+python3 main.py
 ```
+
+This will start a local web server.
+
+## 4. View the Application
+
+Open your favorite web browser and go to the following address:
+
+[http://127.0.0.1:8080](http://127.0.0.1:8080)
+
+You should see the `ruinnakbe` application running. You will be able to see the current timestamp, upload files, and see a list of uploaded files.
