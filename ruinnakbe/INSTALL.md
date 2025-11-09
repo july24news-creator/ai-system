@@ -1,15 +1,13 @@
 # How to Install and Run Noakhali AI System
 
-This document provides instructions on how to install, run, and build the Noakhali AI System web application.
+This document provides instructions on how to install and run the Noakhali AI System web application.
 
 ## Prerequisites
 
 - Python 3 (https://www.python.org/downloads/)
 - `pip` (usually comes with Python)
 
-## Running the Application from Source
-
-### 1. Get the Code
+## 1. Get the Code
 
 First, get the application code. You can do this by cloning the repository:
 
@@ -18,15 +16,29 @@ git clone <repository-url>
 cd ruinnakbe
 ```
 
-### 2. Install Dependencies
+## 2. Install Dependencies
 
-This project uses the Flask web framework. You can install it using the `requirements.txt` file:
+This project uses the Flask web framework and the Google Drive API. You can install all the necessary dependencies using the `requirements.txt` file:
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-### 3. Run the Web Application
+## 3. Set up Google Drive Credentials (Optional)
+
+If you want to use the Google Drive integration, you will need to get API credentials from the Google Cloud Console.
+
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2.  Create a new project.
+3.  Search for and enable the **Google Drive API**.
+4.  Go to the **Credentials** page.
+5.  Click **Create Credentials** and select **OAuth client ID**.
+6.  Choose **Desktop app** as the application type.
+7.  Click **Download JSON** to download your credentials file.
+8.  Rename the downloaded file to `client_secret.json` and place it in the `ruinnakbe` directory.
+9.  You can use the `client_secret.json.example` file as a template to make sure you have the correct format.
+
+## 4. Run the Web Application
 
 To start the application, run the `main.py` script:
 
@@ -36,42 +48,8 @@ python3 main.py
 
 This will start a local web server.
 
-### 4. View the Application
+## 5. View the Application
 
 Open your favorite web browser and go to the following address:
 
 [http://127.0.0.1:8080](http://127.0.0.1:8080)
-
-You should see the Noakhali AI System application running.
-
-## Building a Standalone Executable
-
-You can also build a standalone executable for the application. This will package the application and all its dependencies into a single file.
-
-### 1. Install PyInstaller
-
-You will need to install the `pyinstaller` package to build the executable. You can install it using `pip`:
-
-```bash
-pip3 install pyinstaller
-```
-
-### 2. Build the Executable
-
-To build the executable, run the following command from the `ruinnakbe` directory:
-
-```bash
-pyinstaller --onefile --add-data "templates:templates" main.py
-```
-
-This will create a `dist` directory containing the executable file named `main`.
-
-### 3. Run the Executable
-
-You can run the application by executing the file created in the `dist` directory:
-
-```bash
-./dist/main
-```
-
-This will start the web server, and you can view the application in your browser as described above.

@@ -119,3 +119,6 @@ release/
 # Uploaded files
 uploads/*
 !uploads/.gitkeep
+
+# Google API credentials
+client_secret.json
