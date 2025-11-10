@@ -11,7 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY main.py .
 COPY templates templates
-COPY uploads .gitkeep uploads/
 
 # Create a non-root user and switch to it
 RUN useradd --create-home appuser
