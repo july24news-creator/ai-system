@@ -53,11 +53,11 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
-        flash("No file part")
+        flash("No file part", "danger")
         return redirect(request.url)
     file = request.files['file']
     if file.filename == '':
-        flash("No selected file")
+        flash("No selected file", "danger")
         return redirect(request.url)
     if file:
         filename = secure_filename(file.filename)
@@ -67,7 +67,7 @@ def upload_file():
             filename = f"{base}_{counter}{extension}"
             counter += 1
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash(f"File '{filename}' has been uploaded successfully.")
+        flash(f"File '{filename}' has been uploaded successfully.", "success")
     return redirect(url_for('index'))
 
 @app.route('/delete/<filename>', methods=['POST'])
@@ -77,9 +77,9 @@ def delete_file(filename):
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     if os.path.exists(file_path):
         os.remove(file_path)
-        flash(f"File '{filename}' has been deleted.")
+        flash(f"File '{filename}' has been deleted.", "success")
     else:
-        flash(f"File '{filename}' not found.")
+        flash(f"File '{filename}' not found.", "danger")
     return redirect(url_for('index'))
 
 @app.route('/command', methods=['POST'])

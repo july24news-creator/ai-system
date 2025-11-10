@@ -1,0 +1,34 @@
+name: Create GitHub Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to release (e.g., v1.0.0)'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: Release ${{ github.event.inputs.version }}
+        body: |
+          # New Release
+
+          This release includes the following changes:
+
+          - (CHANGES GO HERE)
+
+          You can download the source code as a `.zip` or `.tar.gz` file below.
+        draft: false
+        prerelease: false
