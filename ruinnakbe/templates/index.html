@@ -22,7 +22,12 @@
       </div>
 
       <div class="text-center mb-4">
-        <a href="/drive_files" class="btn btn-lg btn-danger">Connect to Google Drive</a>
+        {% if drive_configured %}
+          <a href="/drive_files" class="btn btn-lg btn-danger">Connect to Google Drive</a>
+        {% else %}
+          <button type="button" class="btn btn-lg btn-danger" disabled>Connect to Google Drive</button>
+          <p class="text-muted mt-2">Google Drive is not configured. Please add your <code>client_secret.json</code> file.</p>
+        {% endif %}
       </div>
 
       <div class="card mb-4">
@@ -71,7 +76,12 @@
             </div>
             <ul class="list-group list-group-flush">
               {% for file in files %}
-                <li class="list-group-item">{{ file }}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ file }}
+                  <form action="{{ url_for('delete_file', filename=file) }}" method="post" class="ms-2">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                  </form>
+                </li>
               {% else %}
                 <li class="list-group-item">No files uploaded yet.</li>
               {% endfor %}
